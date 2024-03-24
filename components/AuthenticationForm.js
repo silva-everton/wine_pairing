@@ -1,37 +1,17 @@
 import { View, Text, TextInput, Pressable, SafeAreaView, StyleSheet, ImageBackground } from "react-native";    
 import { Link } from "expo-router";
 
-
 export default function AuthenticationForm(props) { 
     return (
         <View style={styles.container}> 
-            <ImageBackground source={require('../assets/winery4.png')} style={styles.image}>
-                <Text> {props.title}</Text>
-
-                <Text style={styles.paragraph}> 
-                    Email
-                </Text>   
-
-                <TextInput style={styles.paragraph}> 
-                    Email
-                </TextInput> 
-
-                <Text style={styles.paragraph}> 
-                    Password
-                </Text>   
-
-                <TextInput style={styles.paragraph}> 
-                    Password
-                </TextInput>
-
-                <Pressable style={styles.paragraph}> 
-                    <text> {props.action} </text>
-                </Pressable>
-                
-                <Text style={styles.link}>
-                    <Link href="/profile">GO TO PROFILE</Link>
-                </Text>
-            </ImageBackground>
+            <Text style={styles.title}>{ props.title }</Text>
+            <Text style={styles.label}>Email</Text>
+            <TextInput style={styles.input}/>
+            <Text style={styles.label}>Password</Text>
+            <TextInput style={styles.input} secureTextEntry={true}/>
+            <Pressable style={styles.button}>
+                <Text style={styles.buttonText}>{ props.action }</Text>
+            </Pressable>
         </View>
     )
 }
@@ -40,25 +20,41 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       justifyContent: 'center',
-      padding: 1,
+      padding: 20,
+      marginHorizontal: 20,
+      marginVertical: 20,
+      //marginBottom: 190,
+      //marginTop: 190,
+      //backgroundColor: 'white',
     },
-    image: {
-      flex: 1,
-      resizeMode: "cover",
-      justifyContent: "center"
-    },
-    paragraph: {
-      margin: 24,
-      fontSize: 18,
+    title: {
+      fontSize: 24,
       fontWeight: 'bold',
-      color: 'white',
-      textAlign: 'center',
+      marginBottom: 20,
+      marginTop: 50,
+      justifyContent: 'center',
+      //color: '#6750a4',
     },
-    link: {
-        margin: 24,
-        fontSize: 18,
-        fontWeight: 'bold',
-        color: 'white',
-        textAlign: 'center',
+    label: {
+      fontSize: 18,
+      marginBottom: 5,
+    },
+    input: {
+      height: 40,
+      borderColor: 'gray',
+      borderWidth: 1,
+      marginBottom: 15,
+      paddingLeft: 10,
+      borderRadius: 5,
+    },
+    button: {
+      backgroundColor: '#6750a4',
+      padding: 10,
+      alignItems: 'center',
+      borderRadius: 5,
+    },
+    buttonText: {
+      color: 'white',
+      fontSize: 18,
     },
 });
