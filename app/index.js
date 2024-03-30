@@ -1,16 +1,13 @@
-import { View, Text, SafeAreaView, StyleSheet, ImageBackground, Image } from "react-native";    
+import { View, Text, SafeAreaView, StyleSheet, ImageBackground, Image, ActivityIndicator } from "react-native";    
 import { Link } from "expo-router";
 import AuthenticationForm from "../components/AuthenticationForm";
 
-export default function Home (){
+export default function StartPage(){
 
     return (
-        <SafeAreaView style={styles.container}> 
-            <ImageBackground source={require('../assets/winery4.png')} style={styles.image}>
-                <Image source={require('../assets/logo.png')} style={styles.logo} />
-                <AuthenticationForm title="Register an account" action="Sign up"/> 
-            </ImageBackground>
-        </SafeAreaView>
+        <View className="flex-1 justify-center items-center">
+          <ActivityIndicator size="large" color="gray" />    
+        </View>
 
     )
 }
