@@ -3,6 +3,8 @@ import React, { useEffect } from "react";
 import { useAuth } from "../../context/authContext";
 import { Button } from "react-native-paper";
 import { useNavigation } from '@react-navigation/native';
+import { useRouter } from "expo-router";
+
 
 
 export default function Home(){  
@@ -21,7 +23,7 @@ export default function Home(){
   }, [navigation]);
   
   const menuData = [
-    { id: '1', title: 'Styles of Wine', route: 'profile', image: require('../../assets/stylesofwine1.png')},
+    { id: '1', title: 'Styles of Wine', route: 'styleofWine', image: require('../../assets/stylesofwine1.png')},
     { id: '2', title: 'Types of Grapes', route: 'profile' , image: require('../../assets/typesofgrape.png')},
     { id: '3', title: 'Food and Wine Pairing', route: 'profile' , image: require('../../assets/foodandwinepairing2.png')},
     { id: '4', title: 'Order Online', route: 'profile' , image: require('../../assets/orderonline.png')},
