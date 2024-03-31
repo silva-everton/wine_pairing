@@ -1,4 +1,4 @@
-import { View, Text, TextInput, Button, Link, Image, TouchableOpacity, StyleSheet, Pressable, Alert} from "react-native";
+import { View, Text, TextInput, Button, Link, Image, TouchableOpacity, StyleSheet, Pressable, Alert, ImageBackground} from "react-native";
 import React, {useRef, useState} from "react";
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { StatusBar } from "expo-status-bar";
@@ -35,6 +35,7 @@ export default function SignIn(){
     
     
     return (
+        <ImageBackground source={require('../assets/winery1.png')} style={styles.image}>
         <CustomKeyboardView>
             <StatusBar style="dark" />       
             <View style={{paddingTop: hp(8), paddingHorizontal: wp(5)}} className="flex-1 gap 12">
@@ -71,7 +72,7 @@ export default function SignIn(){
                                     
                                 />
                             </View> 
-                            <Text style={{fontSize: hp(2)}} className="font-semibold text-right text-neutral-500">Forgot password?</Text>
+                            <Text style={{fontSize: hp(2), color: 'white'}} className="font-semibold text-right text-neutral-500">Forgot password?</Text>
 
                         </View>    
 
@@ -100,9 +101,9 @@ export default function SignIn(){
 
                         {/* Sign Up */}
                         <View className="flex-row justify-center">
-                            <Text style={{fontSize: hp(2)}} className="text-neutral-500">Don't have an account? </Text>
+                            <Text style={{fontSize: hp(2), color: 'white'}} className="text-neutral-500">Don't have an account? </Text>
                             <Pressable onPress={()=> router.push('signUp')}>                            
-                                <Text style={{fontSize: hp(2)}} className="font-semibold text-neutral-800"> Sign Up</Text>
+                                <Text style={{fontSize: hp(2), color: 'white'}} className="font-bold text-neutral-800"> Sign Up</Text>
                             </Pressable>
                          </View>       
 
@@ -111,7 +112,7 @@ export default function SignIn(){
                 </View>
             </View>
         </CustomKeyboardView>
-    
+        </ImageBackground>
     )
 }
 
@@ -133,4 +134,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         fontSize: 18,
     },
+
+    image: {
+        flex: 1,
+        resizeMode: "cover",
+        justifyContent: "center"
+      },
 });
