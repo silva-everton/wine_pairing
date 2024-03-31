@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState, useContext } from "react";
-import { onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth"; 
-import { auth } from "../firebaseConfig";
+import { onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth"; 
+import { auth, db } from "../firebaseConfig";
 import { doc, getDoc,setDoc, collection } from "firebase/firestore";
 
 
@@ -13,9 +13,11 @@ export const AuthContextProvider = ({children}) => {
 
    useEffect(() => {
        const unsub = onAuthStateChanged(auth, (user) => {
+            //console.log('got the user : ', user);
             if (user) {
                 setIsAuthenticated(true);
                 setUser(user);
+                updateUserData(user.uid);
             }else {
                 setIsAuthenticated(false);
                 setUser(null);
@@ -24,22 +26,45 @@ export const AuthContextProvider = ({children}) => {
         });
         return unsub;
 
-    }, [])
+    }, []);
+
+    const updateUserData = async (userId) => {
+        const docRef = doc(db, 'users', userId);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+            let data = docSnap.data();
+            setUser({...user, username: data.username, profileUrl: data.profileUrl, userId: data.userId})
+        } else {
+            console.log("No such document!");
+        }
+    }
+
+
+
 
     const login = async (email, password) => {
         try {
+            const response = await signInWithEmailAndPassword(auth, email, password);
+            return {sucess: true};
 
         }
         catch (e) {
+            let msg = e.message;
+            if (msg.includes('(auth/invalid-email)')) msg='Invalid email address';    
+            if (msg.includes('(auth/invalid-credential)')) msg='Wrong credentials';        
+            return {success: false, msg};
            
         }
     }
 
     const logout = async () => {
         try {
+            await signOut(auth);
+            return {success: true}
     
         }
         catch (e) {
+            return {success: false, msg: e.message, error: e};
             
         }
     }
@@ -61,6 +86,7 @@ export const AuthContextProvider = ({children}) => {
         }catch (e) {
             let msg = e.message;
             if (msg.includes('(auth/invalid-email)')) msg='Invalid email address';
+            if (msg.includes('(auth/email-already-in-use)')) msg='This account is already in use';
             return {success: false, msg};
            
         }
