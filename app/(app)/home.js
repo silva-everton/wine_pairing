@@ -1,49 +1,83 @@
-import { View, Text, FlatList, Image, TouchableOpacity } from "react-native";
-import React from "react";
+import { View, Text, FlatList, Image, TouchableOpacity, StyleSheet, ImageBackground } from "react-native";
+import React, { useEffect } from "react";
 import { useAuth } from "../../context/authContext";
 import { Button } from "react-native-paper";
+import { useNavigation } from '@react-navigation/native';
 
 
 export default function Home(){  
   const {logout, user} = useAuth();
+  const navigation = useNavigation();
+
   const handleLogout = async () => {
     await logout();
   }
   //console.log('user :', user);
 
+  useEffect(() => {
+    navigation.setOptions({
+      title: 'MENU',
+    });
+  }, [navigation]);
+  
   const menuData = [
-    { id: '1', title: 'Styles of Wine', image: require('../assets/myprofile.png') },
-    { id: '2', title: 'Types of Grapes', image: require('../assets/typesofgrape.png') },
-    { id: '3', title: 'Food and Wine Pairing', image: require('../assets/foodandwinepairing2.png') },
-    { id: '4', title: 'Order Online', image: require('../assets/orderonline.png') },
-    { id: '5', title: 'My Orders', image: require('../assets/mylist.png') },
-    { id: '6', title: 'My list', image: require('../assets/heart.png') },
-    { id: '7', title: 'My Profile', image: require('../assets/myprofile.png') }, 
-    
+    { id: '1', title: 'Styles of Wine', route: 'profile', image: require('../../assets/stylesofwine1.png')},
+    { id: '2', title: 'Types of Grapes', route: 'profile' , image: require('../../assets/typesofgrape.png')},
+    { id: '3', title: 'Food and Wine Pairing', route: 'profile' , image: require('../../assets/foodandwinepairing2.png')},
+    { id: '4', title: 'Order Online', route: 'profile' , image: require('../../assets/orderonline.png')},
+    { id: '5', title: 'My Orders', route: 'profile' , image: require('../../assets/mylist.png')},
+    { id: '6', title: 'My List', route: 'profile' , image: require('../../assets/heart.png')},
+    { id: '7', title: 'My Profile', route: 'profile' , image: require('../../assets/myprofile.png')},
+   
   ];
 
   const renderMenuItem = ({ item }) => (
-    <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 20 }}>
-      <Image source={item.image} style={{ width: 50, height: 50, marginRight: 10 }} />
-      <Text>{item.title}</Text>
+    <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate(item.route)}>
+      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <Image source={item.image} style={styles.menuItemImage} />
+        <Text style={styles.menuItemText}>{item.title}</Text>
+      </View>
     </TouchableOpacity>
   );
   
-  
-
-
-
-
-
   return (
-    <View>
-       <Text> Home</Text>  
+    <ImageBackground source={require('../../assets/winery1.png')} style={styles.container}>
+          
        <FlatList
         data={menuData}
         renderItem={renderMenuItem}
         keyExtractor={item => item.id}
       />
        <Button title="Logout" onPress={handleLogout}>Logout</Button>
-    </View>
+    
+    </ImageBackground>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20,
+    backgroundColor: '#f5f5f5',
+  },
+  menuItem: {
+    backgroundColor: '#fff',
+    padding: 20,
+    marginBottom: 10,
+    borderRadius: 5,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.3,
+    shadowRadius: 1,
+    elevation: 2,
+  },
+  menuItemText: {
+    fontSize: 18,
+    color: '#333',
+  },
+  menuItemImage: {
+    width: 60,
+    height: 60,
+    marginRight: 10,
+  },
+});
