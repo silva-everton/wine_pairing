@@ -11,48 +11,42 @@ const wineDescription = () => {
       id: '1', 
       title: 'Description', 
       content: [
-        'Riesling is a type of grape that is known for producing excellent white wines. However, it requires a significant amount of time to develop properly. It thrives in cooler climates and boasts both floral and fruity aromas. Its taste can range from bone dry to extremely sweet, so it\'s a good idea to consult with a knowledgeable retailer for advice. The alcohol level of Riesling can indicate its level of sweetness. German Rieslings are classified according to their sugar content. While it may require a bit of effort to fully appreciate, the end result is definitely worth it.',        
-        
+        'Riesling is a type of grape that is known for producing excellent white wines. However, it requires a significant amount of time to develop properly. It thrives in cooler climates and boasts both floral and fruity aromas. Its taste can range from bone dry to extremely sweet, so it\'s a good idea to consult with a knowledgeable retailer for advice. The alcohol level of Riesling can indicate its level of sweetness. German Rieslings are classified according to their sugar content. While it may require a bit of effort to fully appreciate, the end result is definitely worth it.',              
       ] 
     },
     { 
         id: '2', 
         title: 'Body', 
         content: [
-          'Light and delicate with a low level of alcohol.',
-          
+          'Light and delicate with a low level of alcohol.',          
         ] 
       },
       { 
         id: '3', 
         title: 'Dry/Sweet', 
         content: [
-          'Generally medium-dry (sweet to taste) but can also be dry – check label or ask retailer. Alcohol level can be a good indicator – see note below.',
-          
+          'Generally medium-dry (sweet to taste) but can also be dry – check label or ask retailer. Alcohol level can be a good indicator – see note below.',          
         ] 
       },
       { 
         id: '4', 
         title: 'Acidity', 
         content: [
-          'High.',
-          
+          'High.',          
         ] 
       },
       { 
         id: '5', 
         title: 'Age', 
         content: [
-          'Requires about five years of bottle age to develop properly.',
-          
+          'Requires about five years of bottle age to develop properly.',          
         ] 
       },
       { 
         id: '6', 
         title: 'Other', 
         content: [
-          'Something of an acquired taste – exposure is needed to appreciate its qualities. Tends to be relatively low in alcohol..',
-          
+          'Something of an acquired taste – exposure is needed to appreciate its qualities. Tends to be relatively low in alcohol.',          
         ] 
       },
   ];
@@ -81,10 +75,12 @@ const wineDescription = () => {
             <Text style={styles.optionText}>{option}</Text>
             
             </TouchableOpacity>
+            
         ))}
         </View>
-        <ScrollView>
         <Text style={styles.title}>Riesling (kabinett & Spatlese)</Text>
+        <ScrollView>
+        
         {sections.map(section => (
             <View key={section.id} style={styles.section}>
             <Text style={styles.sectionTitle}>{section.title}</Text>
@@ -125,7 +121,7 @@ const styles = StyleSheet.create({
       textAlign: 'center',
       color: 'white',
       justifyContent: 'center',
-      marginBottom: 30,
+      marginBottom: 15,
     },
     section: {
       marginBottom: 30,
