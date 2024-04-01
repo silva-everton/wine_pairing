@@ -3,38 +3,60 @@ import { View, Text, ScrollView, StyleSheet, ImageBackground, TouchableOpacity, 
 import { useNavigation } from '@react-navigation/native';
 import { Link } from "expo-router";
 
-const Regions = () => {
+
+const foodPairing = () => {
     const navigation = useNavigation();
     const sections = [
       { 
         id: '1', 
-        title: 'Germany', 
+        title: 'Food Pairing', 
         content: [
-          'Germanys Mosel-Saar-Ruwer region produces some of the worlds finest medium-dry Riesling wines. The vineyards hug the steep, mineral-rich slopes along the river banks, making mechanical harvesting impossible. These wines are delicate and light, with a unique beauty and mineral-rich flavor. Seek out single-estate wines from famous villages for the highest quality. In Germany, medium-dry wine is known as halbtrocken.',              
+          'These wines are light and low in alcohol with high acidity and a hint of sweetness. They are perfect as an aperitif and pair well with seafood, poultry, pork, veal, and fresh or washed rind cheese. Avoid pairing them with red meat or rich sauces. For Spätlese versions, blue and smoked cheese are a good match.',              
         ] 
       },
       { 
           id: '2', 
-          title: 'Alsace, France', 
+          title: 'Food Examples', 
           content: [
-            'The region of Alsace takes great pride in its Riesling grape variety, which is the most commonly grown in the area. Although most Alsace Rieslings are dry and crisp, there are some exceptional medium-dry options available. However, it is important to note that the label may not always specify the wine is sweetness level, so it is worth checking with your supplier. Generally, a lower alcohol content indicates a medium-dry wine.',          
+            ' Aperitif',  
+            ' Grilled fish (sauce, if any, should be light)',  
+            ' Fish Kebabs',  
+            ' Smoked Fish',  
+            ' Blackened Salmon (spicy)',  
+            ' Chicken with Apricots',  
+            ' Chicken with Paprika',  
+            ' Tandoori Chicken',  
+            ' Savory Chicken',  
+            ' Roast Turkey – Cider Glazed',  
+            ' Roast Pork Belly',  
+            ' Veal Marsala (with sweet Marsala wine)',  
+            ' Veal Piccata (sautéed with lemon, butter)',  
+            ' Chili (not too hot)',  
+            ' Pad Thai',  
+            ' Thai Red Curry',  
+            ' Thai Fish Cakes',  
+            ' Onion Tart',  
+            ' Fresh Salads with White Meat',  
+
           ] 
         },
         { 
           id: '3', 
-          title: 'Cooler Regions, USA', 
+          title: 'Cheese Examples', 
           content: [
-            'Although Riesling grown in North America maintains good acidity, the warmer climate in California results in a higher alcohol content and richer fruit than those grown in Europe. The best regions for Riesling are the cooler areas such as Anderson Valley in Mendocino County, California, Finger Lakes in New York State, and Columbia Valley in Washington.',          
+            'Bavarian Blue',       
+            'Cream Cheese',   
+            'Epoisses',   
+            'Goat Cheese',   
+            'Grayson',   
+            'Gruyére',   
+            'Maytag Blue',   
+            'Oka',   
+            'Ricotta',   
+            'Smoked Cheese',      
           ] 
         },
-        { 
-          id: '4', 
-          title: 'Niagara Peninsula, Canada', 
-          content: [
-            'Niagara Peninsula in Ontario is Canada is top viticulture region for cool climate grape varieties like Riesling. They produce all types of Riesling, including their famous sweet icewines. The region is off-dry or medium-dry aromatic wines are also impressive.',          
-          ] 
-        },
-        
+                
     ];
   
     return (
@@ -61,11 +83,10 @@ const Regions = () => {
               onPress={() => {
                 if (option === 'Description') {
                   navigation.navigate('wineDescription');
-                } else if (option === 'Food Pairing') {
-                  navigation.navigate('foodPairing');
+                }else if (option === 'Regions') {
+                  navigation.navigate('regions');
                 }
               }}
-              
             >
               <Text style={styles.optionText}>{option}</Text>
               
@@ -150,10 +171,10 @@ const Regions = () => {
           backgroundColor: 'rgba(0, 0, 0, 0)', 
         },
         regionsOption: {
-          backgroundColor: '#6750a4', 
+            backgroundColor: 'rgba(0, 0, 0, 0)', 
         },
         foodPairingOption: {
-          backgroundColor: 'rgba(0, 0, 0, 0)', 
+          backgroundColor: '#6750a4', 
         },
         orderOption: {
           backgroundColor: 'rgba(0, 0, 0, 0)', 
@@ -177,4 +198,4 @@ const Regions = () => {
         },
     });
 
-export default Regions;
+    export default foodPairing;

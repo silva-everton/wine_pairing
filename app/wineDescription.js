@@ -74,6 +74,8 @@ const wineDescription = () => {
             onPress={() => {
                 if (option === 'Regions') {
                   navigation.navigate('regions');
+                }else if (option === 'Food Pairing') {
+                  navigation.navigate('foodPairing');
                 }
               }}
             >
@@ -143,6 +145,7 @@ const styles = StyleSheet.create({
     sectionTitle: {
       fontSize: 22,
       fontWeight: 'bold',
+      textAlign: 'center',
       color: '#333',
       marginBottom: 10,
     },
