@@ -8,11 +8,11 @@ export default function aromaticOptions() {
   const navigation = useNavigation();
 
     const wines = [
-      { id: '1', name: 'Riesling (Kabinett and Spatlese', route: 'stylesofWine'},
-      { id: '2', name: 'Pinot Gris', route: 'stylesofWine'},
-      { id: '3', name: 'Muscat / Moscato' , route: 'stylesofWine'},
-      { id: '4', name: 'Fiano' , route: 'stylesofWine'},
-      { id: '5', name: 'Chenin Blanc (Medium-Dry)' , route: 'stylesofWine'},
+      { id: '1', name: 'Riesling (Kabinett and Spatlese', route: 'wineDescription'},
+      { id: '2', name: 'Pinot Gris', route: 'wineDescription'},
+      { id: '3', name: 'Muscat / Moscato' , route: 'wineDescription'},
+      { id: '4', name: 'Fiano' , route: 'wineDescription'},
+      { id: '5', name: 'Chenin Blanc (Medium-Dry)' , route: 'wineDescription'},
     ];
 
     const renderItem = ({ item }) => (
@@ -93,6 +93,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginVertical: 15,
     marginBottom: 30,
+  },
+  footer: {
+    //flex: 1,
+    justifyContent: 'flex-end',
+    marginBottom: 36,
   },
 }); 
 
