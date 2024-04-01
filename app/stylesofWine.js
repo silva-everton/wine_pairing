@@ -6,12 +6,12 @@ export default function StylesOfWine() {
     const navigation = useNavigation();
 
     const menuData = [
-      { id: '1', title: 'Aromatic (Dry and Medium Dry)', route: 'profile', image: require('../assets/aromatic.png')},
-      { id: '2', title: 'Crispy (Dry - Unoaked)', route: 'profile', image: require('../assets/crisp.png')},
-      { id: '3', title: 'Rich (Full Bodied - Oaked)', route: 'profile', image: require('../assets/rich.png')},
-      { id: '4', title: 'Fruity (Light - Medium Bodied)', route: 'profile', image: require('../assets/fruity.png')},
-      { id: '5', title: 'Smooth (Medium - Full Bodied)', route: 'profile', image: require('../assets/smooth.png')},
-      { id: '6', title: 'Porwerful (Big and intense)', route: 'profile', image: require('../assets/powerful.png')},
+      { id: '1', title: 'Aromatic (Dry and Medium Dry)', route: 'aromaticOptions', image: require('../assets/aromatic.png')},
+      { id: '2', title: 'Crispy (Dry - Unoaked)', route: 'aromaticOptions', image: require('../assets/crisp.png')},
+      { id: '3', title: 'Rich (Full Bodied - Oaked)', route: 'aromaticOptions', image: require('../assets/rich.png')},
+      { id: '4', title: 'Fruity (Light - Medium Bodied)', route: 'aromaticOptions', image: require('../assets/fruity.png')},
+      { id: '5', title: 'Smooth (Medium - Full Bodied)', route: 'aromaticOptions', image: require('../assets/smooth.png')},
+      { id: '6', title: 'Porwerful (Big and intense)', route: 'aromaticOptions', image: require('../assets/powerful.png')},
              
     ];
 

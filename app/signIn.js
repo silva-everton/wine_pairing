@@ -28,8 +28,9 @@ export default function SignIn(){
         setLoading(false);
         console.log('sign in response :', response);
         if(!response.success){
-            //Alert.alert('Sign In', response.msg);
-        }   
+            Alert.alert('Sign In', response.msg);
+        }       
+
         
     }
     
