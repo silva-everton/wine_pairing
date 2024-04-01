@@ -7,7 +7,7 @@ export default function Profile() {
             <ImageBackground source={require('../assets/winery4.png')} style={styles.image}>
                 <Text style={styles.paragraph}> My profile page</Text>      
                 <Text style={styles.link}>
-                    <Link href="/">GO TO HOME</Link>
+                    <Link href="home">GO TO MENU</Link>
                 </Text>
             </ImageBackground>
         </SafeAreaView>

@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, StyleSheet, ImageBackground, FlatList, TouchableOpacity } from "react-native";    
+import { View, Text, SafeAreaView, StyleSheet, ImageBackground, FlatList, TouchableOpacity, Image } from "react-native";    
 import { Link } from "expo-router";
 import { useNavigation } from '@react-navigation/native';
 
@@ -6,35 +6,38 @@ export default function StylesOfWine() {
     const navigation = useNavigation();
 
     const menuData = [
-      { id: '1', title: 'Aromatic (Dry and Medium Dry)', route: 'profile'},
-      { id: '2', title: 'Crispy (Dry - Unoaked)', route: 'profile'},
-      { id: '3', title: 'Rich (Full Bodied - Oaked)', route: 'profile'},
-      { id: '4', title: 'Fruity (Light - Medium Bodied)', route: 'profile'},
-      { id: '5', title: 'Smooth (Medium - Full Bodied)', route: 'profile'},
-      { id: '6', title: 'Porwerful (Big and intense)', route: 'profile'},
+      { id: '1', title: 'Aromatic (Dry and Medium Dry)', route: 'profile', image: require('../assets/aromatic.png')},
+      { id: '2', title: 'Crispy (Dry - Unoaked)', route: 'profile', image: require('../assets/crisp.png')},
+      { id: '3', title: 'Rich (Full Bodied - Oaked)', route: 'profile', image: require('../assets/rich.png')},
+      { id: '4', title: 'Fruity (Light - Medium Bodied)', route: 'profile', image: require('../assets/fruity.png')},
+      { id: '5', title: 'Smooth (Medium - Full Bodied)', route: 'profile', image: require('../assets/smooth.png')},
+      { id: '6', title: 'Porwerful (Big and intense)', route: 'profile', image: require('../assets/powerful.png')},
              
     ];
 
     const renderItem = ({ item }) => (
-        <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate(item.route)}>
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <Text style={styles.menuText}>{item.title}</Text>
-          </View>
-        </TouchableOpacity>
+      <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate(item.route)}>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <Image source={item.image} style={styles.menuImage} />
+          <Text style={styles.menuText}>{item.title}</Text>
+        </View>
+      </TouchableOpacity>
     );
 
     return (
        
-        <ImageBackground source={require('../assets/winery1.png')} style={styles.image}>
+        <ImageBackground source={require('../assets/background2.jpg')} style={styles.image}>
             <Text style={styles.paragraph}> STYLES OF WINE</Text>      
                 <FlatList
                   data={menuData}
                   renderItem={renderItem}
                   keyExtractor={item => item.id}
                 />
-                <Text style={styles.link}>
-                    <Link href="/">GO TO HOME</Link>
-            </Text>
+                <View style={styles.footer}>
+                  <Text style={styles.link}>
+                    <Link href="home">GO TO MENU</Link>
+                  </Text>
+                </View>
         </ImageBackground>
        
     )
@@ -66,8 +69,9 @@ const styles = StyleSheet.create({
     },
     link: {
       fontSize: 16,
-      color: '#2e78b7',
+      color: 'white',
       textAlign: 'center',
+      fontWeight: 'bold',
       marginVertical: 15,
     },
     item: {
@@ -81,7 +85,7 @@ const styles = StyleSheet.create({
       fontSize: 16,
     },
     menuItem: {
-        backgroundColor: 'rgba(255, 255, 255, 0.7)',
+        backgroundColor: 'white',
         padding: 15,
         marginBottom: 10,
         borderRadius: 5,
@@ -94,4 +98,16 @@ const styles = StyleSheet.create({
         color: '#333',
         textAlign: 'center', // center the text
     },
+    menuImage: {
+      width: 60,
+      height: 60,
+      marginRight: 10,
+    },
+    footer: {
+      //flex: 1,
+      justifyContent: 'flex-end',
+      marginBottom: 36,
+    },
+
+
 });
