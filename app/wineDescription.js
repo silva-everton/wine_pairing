@@ -71,6 +71,11 @@ const wineDescription = () => {
                 option === 'Food Pairing' && styles.foodPairingOption,
                 option === 'Order' && styles.orderOption
             ]}
+            onPress={() => {
+                if (option === 'Regions') {
+                  navigation.navigate('regions');
+                }
+              }}
             >
             <Text style={styles.optionText}>{option}</Text>
             
@@ -144,9 +149,10 @@ const styles = StyleSheet.create({
     sectionContent: {
       fontSize: 16,
       color: '#666',
+      textAlign: 'justify',
     },
     optionText: {
-      fontSize: 14,
+      fontSize: 16,
       color: 'white',
     },
     descriptionOption: {
