@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
       color: 'white',
       textAlign: 'center',
       fontWeight: 'bold',
-      marginVertical: 15,
+      marginVertical: 10,
     },
     item: {
       backgroundColor: 'rgba(255, 255, 255, 0.7)',
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     footer: {
       //flex: 1,
       justifyContent: 'flex-end',
-      marginBottom: 36,
+      //marginBottom: 10,
     },
     searchInput: {
         height: 40,
