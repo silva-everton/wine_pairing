@@ -21,7 +21,7 @@ export default function meatOptions (){
     { id: '9', title: 'Roast Turkey - Citrus Marinated', route: 'wineDescription'},
     { id: '10', title: 'Pork Stir Fry', route: 'wineDescription'},
     { id: '11', title: 'Steak Tarture', route: 'wineDescription'},
-    { id: '12', title: 'Sirloin Steak', route: 'wineDescription'},   
+    { id: '12', title: 'Sirloin Steak', route: 'sirloin'},   
            
   ];
 
