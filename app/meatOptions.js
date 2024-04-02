@@ -10,17 +10,17 @@ export default function meatOptions (){
   const navigation = useNavigation();
 
   const menuData = [
-    { id: '1', title: 'Beef Bourguignon', route: 'wineDescription'},
-    { id: '2', title: 'Beef Burgers', route: 'wineDescription'},
-    { id: '3', title: 'Beef Stews & Ragouts', route: 'wineDescription'},
-    { id: '4', title: 'Meatballs', route: 'wineDescription'},
-    { id: '5', title: 'Breast of Chicken', route: 'wineDescription'},
-    { id: '6', title: 'Fried Chicken', route: 'wineDescription'},
-    { id: '7', title: 'Chicken with Mushrooms', route: 'wineDescription'},
-    { id: '8', title: 'Breast of Duck', route: 'wineDescription'},
-    { id: '9', title: 'Roast Turkey - Citrus Marinated', route: 'wineDescription'},
-    { id: '10', title: 'Pork Stir Fry', route: 'wineDescription'},
-    { id: '11', title: 'Steak Tarture', route: 'wineDescription'},
+    { id: '1', title: 'Beef Bourguignon', route: 'sirloin'},
+    { id: '2', title: 'Beef Burgers', route: 'sirloin'},
+    { id: '3', title: 'Beef Stews & Ragouts', route: 'sirloin'},
+    { id: '4', title: 'Meatballs', route: 'sirloin'},
+    { id: '5', title: 'Breast of Chicken', route: 'sirloin'},
+    { id: '6', title: 'Fried Chicken', route: 'sirloin'},
+    { id: '7', title: 'Chicken with Mushrooms', route: 'sirloin'},
+    { id: '8', title: 'Breast of Duck', route: 'sirloin'},
+    { id: '9', title: 'Roast Turkey - Citrus Marinated', route: 'sirloin'},
+    { id: '10', title: 'Pork Stir Fry', route: 'sirloin'},
+    { id: '11', title: 'Steak Tarture', route: 'sirloin'},
     { id: '12', title: 'Sirloin Steak', route: 'sirloin'},   
            
   ];

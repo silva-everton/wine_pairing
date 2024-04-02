@@ -1,6 +1,7 @@
 import { View, Text, SafeAreaView, StyleSheet, ImageBackground, FlatList, TouchableOpacity, Image } from "react-native";    
 import { Link } from "expo-router";
 import { useNavigation } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default function StylesOfWine() { 
     const navigation = useNavigation();
@@ -17,9 +18,12 @@ export default function StylesOfWine() {
 
     const renderItem = ({ item }) => (
       <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate(item.route)}>
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          <Image source={item.image} style={styles.menuImage} />
-          <Text style={styles.menuText}>{item.title}</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <Image source={item.image} style={styles.menuImage} />
+            <Text style={styles.menuText}>{item.title}</Text>
+          </View>
+          <Icon name="chevron-right" size={15} color="#000" />
         </View>
       </TouchableOpacity>
     );

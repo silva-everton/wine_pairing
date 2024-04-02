@@ -18,7 +18,7 @@ export default function aromaticOptions() {
     const renderItem = ({ item }) => (
       <TouchableOpacity style={styles.item} onPress={() => navigation.navigate(item.route)}>
         <Text style={styles.title}>{item.name}</Text>
-        <Icon name="chevron-right" size={20} color="#000" style={styles.icon} />
+        <Icon name="chevron-right" size={15} color="#000" style={styles.icon} />
       </TouchableOpacity>
     );
 
