@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { View, Text, FlatList, Button, Image, StyleSheet, ImageBackground,ToastAndroid } from 'react-native';
+import { View, Text, FlatList, Button, Image, StyleSheet, ImageBackground, ToastAndroid } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const WineList = () => {
-
-    const [cart, setCart] = useState([]);
-
+  const navigation = useNavigation();
+  const [cart, setCart] = useState([]);
   const [wines, setWines] = useState([
     { id: '1', name: 'Wine 1', price: '20', image: require('../assets/bottle1.jpg') },
     { id: '2', name: 'Wine 2', price: '25', image: require('../assets/bottle2.jpg') },
@@ -13,7 +13,6 @@ const WineList = () => {
     { id: '5', name: 'Wine 5', price: '20', image: require('../assets/bottle5.png') },
     { id: '6', name: 'Wine 6', price: '25', image: require('../assets/bottle6.png') },
     { id: '7', name: 'Wine 7', price: '20', image: require('../assets/bottle7.png') },
-    
   ]);
 
   const addToCart = (item) => {
@@ -38,10 +37,10 @@ const WineList = () => {
         renderItem={renderItem}
         keyExtractor={item => item.id}
       />
+      <Button title="View Cart" onPress={() => navigation.navigate('shoppingCart', { cartItems: cart })} />
     </ImageBackground>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,

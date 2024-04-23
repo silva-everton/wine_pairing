@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
+
 export default function sirloin (){
 
     const [search, setSearch] = useState('');
@@ -36,7 +37,7 @@ export default function sirloin (){
 
       return (
         <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{ flex: 1 }}>
-          <ImageBackground source={require('../assets/background3.jpg')} style={styles.image}>
+          <ImageBackground source={require('../assets/background.jpg')} style={styles.image}>
             <Text style={styles.paragraph}> SIRLOIN STEAK</Text>   
             <TextInput
               style={styles.searchInput}
@@ -83,13 +84,15 @@ const styles = StyleSheet.create({
       borderRadius: 10,
       margin: 10,
       marginTop: 60,    
+      //color: 'white',
     },
     link: {
       fontSize: 16,
-      color: 'black',
+      color: 'white',
       textAlign: 'center',
       fontWeight: 'bold',
       marginVertical: 10,
+      //backgroundColor: 'white',
     },
     item: {
       backgroundColor: 'rgba(255, 255, 255, 0.7)',
@@ -141,7 +144,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: '#000',
         marginTop: 5,
-        //backgroundColor: 'white',
+        backgroundColor: 'white',
         //marginBottom: 10,
         marginRight: 20,
         marginLeft: 20,
@@ -157,21 +160,15 @@ const styles = StyleSheet.create({
         elevation: 5,
       },
       description: {
-        fontSize: 16,
+        fontSize: 20,
         textAlign: 'center',
-        color: '#000',
+        color: 'white',
         //marginTop: 10,
         marginBottom: 5,
-       // backgroundColor: 'white',
+       //backgroundColor: 'white',
         marginRight: 20,
         marginLeft: 20,
-        padding: 10,
-        borderRadius: 10,
-        shadowColor: "#000",
-        shadowOffset: {
-          width: 0,
-          height: 2,
-        },
+        padding: 10,      
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
         elevation: 5,

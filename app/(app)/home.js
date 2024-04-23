@@ -23,13 +23,13 @@ export default function Home(){
   }, [navigation]);
   
   const menuData = [
-    { id: '1', title: 'Styles of Wine', route: 'stylesofWine', image: require('../../assets/stylesofwine1.png')},
-    { id: '2', title: 'Types of Grapes', route: 'grapes' , image: require('../../assets/typesofgrape.png')},
-    { id: '3', title: 'Food and Wine Pairing', route: 'foodMenu' , image: require('../../assets/foodandwinepairing2.png')},
-    { id: '4', title: 'Order Online', route: 'wineList' , image: require('../../assets/orderonline.png')},
-    { id: '5', title: 'My Orders', route: 'profile' , image: require('../../assets/mylist.png')},
-    { id: '6', title: 'My List', route: 'profile' , image: require('../../assets/heart.png')},
-    { id: '7', title: 'My Profile', route: 'profile' , image: require('../../assets/myprofile.png')},
+    //{ id: '1', title: 'Styles of Wine', route: 'productlist', image: require('../../assets/stylesofwine1.png')},
+    { id: '2', title: 'Types of Grapes', route: 'productlist' , image: require('../../assets/typesofgrape.png')},
+    { id: '3', title: 'Food and Wine Pairing', route: 'shoppingCart' , image: require('../../assets/foodandwinepairing2.png')},
+    //{ id: '4', title: 'Order Online', route: 'wineList' , image: require('../../assets/orderonline.png')},
+    //{ id: '5', title: 'My Orders', route: 'foodCollection' , image: require('../../assets/mylist.png')},
+    //{ id: '6', title: 'My List', route: 'shoppingCart' , image: require('../../assets/heart.png')},
+    //{ id: '7', title: 'My Profile', route: 'profile' , image: require('../../assets/myprofile.png')},
    
   ];
 

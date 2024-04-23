@@ -30,4 +30,6 @@ export const db = getFirestore(app);
 
 export const usersRef = collection(db, 'users');
 export const roomRef = collection(db, 'rooms');
+export const winesRef = collection(db, 'Wines'); 
+
 
