@@ -46,7 +46,7 @@ const ProductList = () => {
   return (
     <ImageBackground source={require('../assets/winery1.png')} style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>Wine List</Text>
+        <Text style={styles.title}>WINE LIST</Text>
       </View>
       <TextInput
         style={styles.searchBar}

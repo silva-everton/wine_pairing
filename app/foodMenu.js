@@ -10,14 +10,14 @@ export default function FoodMenu() {
   const navigation = useNavigation();
 
   const menuData = [
-    { id: '1', title: 'Meat', route: 'meatOptions', image: require('../assets/meat.png')},
-    { id: '2', title: 'Seafood', route: 'meatOptions', image: require('../assets/seafood.png')},
-    { id: '3', title: 'Pasta', route: 'meatOptions', image: require('../assets/pasta.png')},
-    { id: '4', title: 'Pizza', route: 'meatOptions', image: require('../assets/pizza.png')},
-    { id: '5', title: 'Ethnic', route: 'meatOptions', image: require('../assets/padthai.png')},
-    { id: '6', title: 'Vegetables', route: 'meatOptions', image: require('../assets/vegetables.png')},
-    { id: '7', title: 'Salads', route: 'meatOptions', image: require('../assets/salad.png')},
-    { id: '8', title: 'Cheese', route: 'meatOptions', image: require('../assets/cheese.png')},
+    { id: '1', title: 'Meat', route: 'meatOptions', image: require('../assets/Meat.png')},
+    { id: '2', title: 'Seafood', route: 'meatOptions', image: require('../assets/Seafood.png')},
+    { id: '3', title: 'Pasta', route: 'meatOptions', image: require('../assets/Pasta.png')},
+    { id: '4', title: 'Pizza', route: 'meatOptions', image: require('../assets/Pizza.png')},
+    { id: '5', title: 'Ethnic', route: 'meatOptions', image: require('../assets/Ethnic.png')},
+    { id: '6', title: 'Vegetables', route: 'meatOptions', image: require('../assets/Vegetables.png')},
+    { id: '7', title: 'Salads', route: 'meatOptions', image: require('../assets/Salad.png')},
+    { id: '8', title: 'Cheese', route: 'meatOptions', image: require('../assets/Cheese.png')},
    
            
   ];

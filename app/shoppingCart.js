@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList, Modal, TouchableOpacity, TextInput, StyleSheet,  Button, ImageBackground } from 'react-native';
+import { View, Text, FlatList, Modal, TouchableOpacity, TextInput, StyleSheet, Button, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { auth, db } from "../firebaseConfig";
 import { collection, onSnapshot, query, doc, updateDoc, addDoc } from 'firebase/firestore';
@@ -35,14 +35,24 @@ const ShoppingCart = ({ route }) => {
   const handlePress = (item) => {
     setSelectedItem(item);
     setEditedName(item.Name);
+    setNewWine({
+      Category: item.Category,
+      Name: item.Name,
+      Style: item.Style,
+      Type: item.Type,
+    });
   };
 
   const handleSave = async () => {
     const winesRef = doc(db, 'Wines', selectedItem.id);
-    await updateDoc(winesRef, { Name: editedName });
+    await updateDoc(winesRef, newWine);
 
-    setSelectedItem(null);
-    setEditedName('');
+    setNewWine({
+      Category: '',
+      Name: '',
+      Style: '',
+      Type: '',
+    });
   };
 
   const handleAdd = async () => {
@@ -57,6 +67,7 @@ const ShoppingCart = ({ route }) => {
     });
     setAddModalVisible(false);
   };
+  
 
   const renderItem = ({ item }) => (
     <TouchableOpacity onPress={() => handlePress(item)} style={styles.itemContainer}>
@@ -64,13 +75,13 @@ const ShoppingCart = ({ route }) => {
     </TouchableOpacity>
   );
 
-  const filteredWines = wines.filter(wine => 
+  const filteredWines = wines.filter(wine =>
     wine.Name.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
     <ImageBackground source={require('../assets/winery1.png')} style={styles.container}>
-      <Text style={styles.title}>FOOD LIST </Text>      
+      <Text style={styles.title}>FOOD LIST </Text>
       <TextInput
         style={styles.searchInput}
         value={search}
@@ -82,11 +93,11 @@ const ShoppingCart = ({ route }) => {
         renderItem={renderItem}
         keyExtractor={item => item.id}
       />
-     <TouchableOpacity style={styles.addButton} onPress={() => setAddModalVisible(true)}>
-      <Text style={styles.addButtonText}>Add Food</Text>
-    </TouchableOpacity>
+      <TouchableOpacity style={styles.addButton} onPress={() => setAddModalVisible(true)}>
+        <Text style={styles.addButtonText}>Add Food</Text>
+      </TouchableOpacity>
       <Text style={styles.link}>
-          <Link href="home">GO TO MENU</Link>
+        <Link href="home">MENU</Link>
       </Text>
       <Modal
         animationType="slide"
@@ -98,27 +109,30 @@ const ShoppingCart = ({ route }) => {
           <View style={styles.modalView}>
             {selectedItem && (
               <>
-                <Text style={styles.modalTitle}>DETAILS</Text>
-                <View style={styles.inputContainer}>
-                  <Text style={styles.inputLabel}>Name:</Text>
-                  <TextInput
-                    style={styles.input}
-                    value={editedName}
-                    onChangeText={setEditedName}
-                  />
-                </View>
-                <View style={styles.detailContainer}>
-                  <Text style={styles.detailLabel}>Category:</Text>
-                  <Text style={styles.detailText}>{selectedItem.Category}</Text>
-                </View>
-                <View style={styles.detailContainer}>
-                  <Text style={styles.detailLabel}>Style:</Text>
-                  <Text style={styles.detailText}>{selectedItem.Style}</Text>
-                </View>
-                <View style={styles.detailContainer}>
-                  <Text style={styles.detailLabel}>Type:</Text>
-                  <Text style={styles.detailText}>{selectedItem.Type}</Text>
-                </View>
+                <Text style={styles.inputLabel}>Category:</Text>
+                <TextInput
+                  style={styles.input}
+                  value={newWine.Category}
+                  onChangeText={text => setNewWine(prevState => ({ ...prevState, Category: text }))}
+                />
+                <Text style={styles.inputLabel}>Name:</Text>
+                <TextInput
+                  style={styles.input}
+                  value={newWine.Name}
+                  onChangeText={text => setNewWine(prevState => ({ ...prevState, Name: text }))}
+                />
+                <Text style={styles.inputLabel}>Style:</Text>
+                <TextInput
+                  style={styles.input}
+                  value={newWine.Style}
+                  onChangeText={text => setNewWine(prevState => ({ ...prevState, Style: text }))}
+                />
+                <Text style={styles.inputLabel}>Type:</Text>
+                <TextInput
+                  style={styles.input}
+                  value={newWine.Type}
+                  onChangeText={text => setNewWine(prevState => ({ ...prevState, Type: text }))}
+                />
                 <TouchableOpacity
                   style={styles.button}
                   onPress={handleSave}
@@ -144,6 +158,9 @@ const ShoppingCart = ({ route }) => {
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
+          <TouchableOpacity style={styles.closeButton} onPress={() => setAddModalVisible(false)}>
+            <Text style={styles.closeButtonText}>X</Text>
+          </TouchableOpacity>
             <Text style={styles.modalTitle}>Add New Wine</Text>
             <View style={styles.inputContainer}>
               <Text style={styles.inputLabel}>Category:</Text>
@@ -185,28 +202,43 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: '#f8f8f8',
   },
-   title: {
+  title: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: 'white',
+    color: 'black',
     padding: 10,
     marginTop: 60,
     marginBottom: 40,
     textAlign: 'center',
   },
+  closeButton: {
+    position: 'absolute',
+    right: 10,
+    top: 10,
+    backgroundColor: 'black', 
+    borderRadius: 15,
+    width: 30,
+    height: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  closeButtonText: {
+    color: '#FFFFFF', 
+    fontSize: 20,
+  },
   addButton: {
-    backgroundColor: '#007BFF', // Change this to your preferred color
+    backgroundColor: '#007BFF', 
     padding: 10,
     borderRadius: 5,
     marginBottom: 10,
   },
   addButtonText: {
-    color: '#FFFFFF', // Change this to your preferred color
+    color: '#FFFFFF', 
     fontSize: 16,
     textAlign: 'center',
   },
   itemContainer: {
-    flexDirection: 'column', // Add this line
+    flexDirection: 'column', 
     backgroundColor: '#fff',
     padding: 20,
     borderRadius: 10,
@@ -243,103 +275,103 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'black',
     textAlign: 'center',
-},
-centeredView: {
-  flex: 1,
-  justifyContent: 'center',
-  alignItems: 'center',
-  marginTop: 22,
-},
-modalView: {
-  margin: 30,
-  backgroundColor: 'white',
-  borderRadius: 20,
-  padding: 90,
-  alignItems: 'center',
-  shadowColor: '#000',
-  shadowOffset: {
-    width: 0,
-    height: 2,
   },
-  shadowOpacity: 0.25,
-  shadowRadius: 4,
-  elevation: 5,
-},
-modalTitle: {
-  marginBottom: 15,
-  textAlign: 'center',
-  fontSize: 24,
-  fontWeight: 'bold',
-},
-modalText: {
-  marginBottom: 15,
-  textAlign: 'center',
-  fontSize: 18,
-},
-button: {
-  backgroundColor: '#2196F3',
-  borderRadius: 20,
-  padding: 10,
-  elevation: 2,
-},
-buttonText: {
-  color: 'white',
-  fontWeight: 'bold',
-  textAlign: 'center',
-},
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
+  },
+  modalView: {
+    margin: 30,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 90,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  modalTitle: {
+    marginBottom: 15,
+    textAlign: 'center',
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
+    fontSize: 18,
+  },
+  button: {
+    backgroundColor: '#2196F3',
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+  },
+  buttonText: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
 
-inputLabel: {
-  fontSize: 18,
-  fontWeight: 'bold',
-  color: '#333',
-},
-input: {
-  fontSize: 18,
-  marginBottom: 10, 
-  color: '#333',
-  borderBottomWidth: 1,
-  borderBottomColor: '#333',
-  //flex: 1,
-  textAlign: 'right',
-},
-detailContainer: {
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  marginBottom: 10,
-  width: '100%',
-},
-detailLabel: {
-  fontSize: 18,
-  fontWeight: 'bold',
-  color: '#333',
-},
-detailText: {
-  fontSize: 18,
-  color: '#333',
-},
-button: {
-  backgroundColor: '#2196F3',
-  borderRadius: 20,
-  padding: 10,
-  elevation: 2,
-  marginTop: 20,
-},
-buttonText: {
-  color: 'white',
-  fontWeight: 'bold',
-  textAlign: 'center',
-},
-searchInput: {
-  height: 60,
-  borderColor: 'white',
-  color: 'black', 
-  borderWidth: 1,
-  borderRadius: 10,
-  paddingLeft: 10,
-  paddingRight: 10,
-  margin: 10,
-},
+  inputLabel: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#333',
+  },
+  input: {
+    fontSize: 18,
+    marginBottom: 10,
+    color: '#333',
+    borderBottomWidth: 1,
+    borderBottomColor: '#333',
+    //flex: 1,
+    textAlign: 'right',
+  },
+  detailContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 10,
+    width: '100%',
+  },
+  detailLabel: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#333',
+  },
+  detailText: {
+    fontSize: 18,
+    color: '#333',
+  },
+  button: {
+    backgroundColor: '#2196F3',
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+    marginTop: 20,
+  },
+  buttonText: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  searchInput: {
+    height: 60,
+    borderColor: 'white',
+    color: 'black',
+    borderWidth: 1,
+    borderRadius: 10,
+    paddingLeft: 10,
+    paddingRight: 10,
+    margin: 10,
+  },
 });
 
 export default ShoppingCart;
