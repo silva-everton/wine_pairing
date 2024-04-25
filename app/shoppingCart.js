@@ -161,9 +161,9 @@ const ShoppingCart = ({ route }) => {
           <TouchableOpacity style={styles.closeButton} onPress={() => setAddModalVisible(false)}>
             <Text style={styles.closeButtonText}>X</Text>
           </TouchableOpacity>
-            <Text style={styles.modalTitle}>Add New Wine</Text>
+            <Text style={styles.modalTitle}>Add New Food: </Text>
             <View style={styles.inputContainer}>
-              <Text style={styles.inputLabel}>Category:</Text>
+              <Text style={styles.inputLabel}>Category:                     </Text>
               <TextInput
                 style={styles.input}
                 value={newWine.Category}

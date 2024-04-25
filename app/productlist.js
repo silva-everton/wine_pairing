@@ -88,6 +88,7 @@ const styles = StyleSheet.create({
   },
   itemStyle: {
     fontSize: 16,
+    //alignContent: 'justify',
     color: '#666',
   },
   searchBar: { 
@@ -112,6 +113,7 @@ const styles = StyleSheet.create({
     color: 'black',
     textAlign: 'center',
 },
+
 });
 
 export default ProductList;
